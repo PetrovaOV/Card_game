@@ -1,0 +1,109 @@
+@charset "UTF-8";
+@font-face {
+  font-family: "StratosSkyengWeb-Regular";
+  font-style: normal;
+  font-weight: 400;
+  /* Браузер сначала попробует найти шрифт локально */
+  src: local("StratosSkyengWeb-Regular"), url("../fonts/stratosskyengweb-regular.woff2") format("woff2"), url("../fonts/stratosskyengweb-regular.woff") format("woff");
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: "StratosSkyengWeb-Regular", sans-serif;
+  background: #004980;
+  width: 100vw;
+  height: 100vh;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 480px;
+  height: 459px;
+  left: 272px;
+  top: 158px;
+  background-color: #C2F5FF;
+  border-radius: 12px;
+}
+
+.title {
+  white-space: pre-line;
+  width: 208px;
+  height: 96px;
+  left: 408px;
+  top: 210px;
+  /* Pres → Text M */
+  font-family: "StratosSkyengWeb-Regular";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 48px;
+  /* or 120% */
+  text-align: center;
+  font-feature-settings: "pnum" on, "lnum" on;
+  color: #004980;
+  margin-bottom: 48px;
+}
+
+.windows {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 24px;
+  margin-bottom: 67px;
+}
+
+.window {
+  width: 97px;
+  height: 98px;
+  left: 342px;
+  top: 354px;
+  font-family: "StratosSkyengWeb-Regular";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 72px;
+  /* or 112% */
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  /* Blue / 100 */
+  color: #0080C1;
+  background: #FFFFFF;
+  border-radius: 12px;
+}
+
+.button__start {
+  width: 246px;
+  height: 48px;
+  left: 389px;
+  top: 519px;
+  /* Pres → Caption S */
+  font-family: "StratosSkyengWeb-Regular";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 32px;
+  /* or 133% */
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  font-feature-settings: "pnum" on, "lnum" on;
+  color: #FFFFFF;
+  background: #7AC100;
+  border-radius: 12px;
+  border: none;
+}/*# sourceMappingURL=card_game.css.map */
