@@ -15,65 +15,20 @@ const difficulty = [
 
                 tag: 'div',
                 cls: 'window',
-                content: [{
-
-                    tag: 'input',
-                    attrs: {
-                        type: 'radio',
-                        name: 'radio',
-                        id: 'radio_1',
-                        checked: ''
-                    }
-                },
-                {
-                    tag: 'label',
-                    content: "1",
-                    attrs: {
-                        for: 'radio_1'
-                    }
-                }],
+                content: "1"
             },
             {
+
                 tag: 'div',
                 cls: 'window',
-                content: [{
-
-                    tag: 'input',
-                    attrs: {
-                        type: 'radio',
-                        name: 'radio',
-                        id: 'radio_2',
-                    }
-                },
-                {
-                    tag: 'label',
-                    content: "2",
-                    attrs: {
-                        for: 'radio_2'
-                    }
-                }],
+                content: "2"
             },
             {
+
                 tag: 'div',
                 cls: 'window',
-                content: [{
-
-                    tag: 'input',
-                    attrs: {
-                        type: 'radio',
-                        name: 'radio',
-                        id: 'radio_3',
-                    }
-                },
-                {
-                    tag: 'label',
-                    content: "3",
-                    attrs: {
-                        for: 'radio_3'
-                    }
-                }]
-            }
-            ]
+                content: "3"
+            }]
         },
         {
             tag: 'button',
@@ -83,17 +38,8 @@ const difficulty = [
             content: 'Старт',
             cls: 'button__start'
         }
-        ]
+        ],
     }
-]
+];
 
-const temporary = {
-    tag: "div",
-    cls: 'box',
-    content: [{
 
-        tag: 'h1',
-        cls: 'title',
-        content: 'Следующая страница'
-    }]
-}

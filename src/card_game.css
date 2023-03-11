@@ -85,33 +85,6 @@
   border-radius: 12px;
 }
 
-.window input[type=radio] {
-  display: none;
-}
-
-.window label {
-  cursor: pointer;
-  border-radius: 12px;
-}
-
-/* Checked */
-.window input[type=radio]:checked + label {
-  border: 3px solid #004980;
-  padding: 10px 30px;
-  line-height: 72px;
-}
-
-/* Hover */
-.window:hover label {
-  color: #666;
-}
-
-.window:hover input[type=radio] + label {
-  border: 3px solid #004980;
-  padding: 10px 30px;
-  line-height: 72px;
-}
-
 .button__start {
   width: 246px;
   height: 48px;
@@ -128,19 +101,9 @@
   align-items: center;
   text-align: center;
   justify-content: center;
+  font-feature-settings: "pnum" on, "lnum" on;
   color: #FFFFFF;
   background: #7AC100;
   border-radius: 12px;
   border: none;
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
-  transition: box-shadow 0.2s, transform 0.2s;
-}
-
-.button__start:hover {
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
-}
-
-.button__start:active {
-  box-shadow: 0 4px 6px rgb(0, 0, 0);
-  transform: translateY(2px);
 }/*# sourceMappingURL=card_game.css.map */
