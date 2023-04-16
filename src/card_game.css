@@ -31,8 +31,114 @@
   height: 459px;
   left: 272px;
   top: 158px;
-  background-color: #C2F5FF;
+  background-color: #c2f5ff;
   border-radius: 12px;
+}
+
+.wrap {
+  width: 100%;
+  height: 100%;
+  left: 20px;
+  top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 35px;
+  align-items: center;
+}
+
+.cap {
+  margin: 20px auto;
+  background-color: #004980;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 700px;
+  gap: 240px;
+}
+
+.time {
+  width: 155px;
+  height: 91px;
+  display: flex;
+  justify-content: space-around;
+  text-align: left;
+}
+
+.min {
+  width: 73px;
+  color: #ffffff;
+  text-align: right;
+}
+
+.show__min,
+.show__empty,
+.show__sec {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 72px;
+  color: #ffffff;
+}
+
+.empty {
+  width: 9px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.sec {
+  width: 73px;
+  color: #ffffff;
+  text-align: right;
+}
+
+.field__cards {
+  margin: 0 auto;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 700px;
+  background: #004980;
+}
+
+.card {
+  width: 95px;
+  height: 133px;
+  border-radius: 4px;
+  position: relative;
+  perspective: 1000px;
+}
+
+.front,
+.back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 1s;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  border-radius: 4px;
+}
+
+.back {
+  background-color: #fff;
+  transform: rotateY(-180deg);
+}
+
+.card:hover .front {
+  transform: rotateY(-180deg);
+}
+
+.card:hover .back {
+  transform: rotateY(-360deg);
 }
 
 .title {
@@ -41,13 +147,11 @@
   height: 96px;
   left: 408px;
   top: 210px;
-  /* Pres → Text M */
   font-family: "StratosSkyengWeb-Regular";
   font-style: normal;
   font-weight: 400;
   font-size: 40px;
   line-height: 48px;
-  /* or 120% */
   text-align: center;
   font-feature-settings: "pnum" on, "lnum" on;
   color: #004980;
@@ -74,15 +178,40 @@
   font-weight: 400;
   font-size: 64px;
   line-height: 72px;
-  /* or 112% */
   display: flex;
   align-items: center;
   text-align: center;
   justify-content: center;
-  /* Blue / 100 */
-  color: #0080C1;
-  background: #FFFFFF;
+  color: #0080c1;
+  background: #ffffff;
   border-radius: 12px;
+}
+
+.window input[type=radio] {
+  display: none;
+}
+
+.window label {
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+/* Checked */
+.window input[type=radio]:checked + label {
+  border: 3px solid #004980;
+  padding: 10px 30px;
+  line-height: 72px;
+}
+
+/* Hover */
+.window:hover label {
+  color: #666;
+}
+
+.window:hover input[type=radio] + label {
+  border: 3px solid #004980;
+  padding: 10px 30px;
+  line-height: 72px;
 }
 
 .button__start {
@@ -101,9 +230,42 @@
   align-items: center;
   text-align: center;
   justify-content: center;
-  font-feature-settings: "pnum" on, "lnum" on;
-  color: #FFFFFF;
-  background: #7AC100;
+  color: #ffffff;
+  background: #7ac100;
   border-radius: 12px;
   border: none;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.button__start:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+}
+
+.button__start:active {
+  box-shadow: 0 4px 6px rgb(0, 0, 0);
+  transform: translateY(2px);
+}
+
+@media screen and (max-width: 645px) {
+  .cap {
+    gap: 40px; /* значение gap для узких экранов */
+    justify-content: center;
+  }
+}
+@media screen and (min-width: 320px) and (max-width: 534px) {
+  .wrap {
+    gap: 5px;
+  }
+  .card {
+    width: 78px;
+    height: 98px;
+    border-radius: 4px;
+  }
+  .field__cards {
+    gap: 7px;
+  }
+  .cap {
+    gap: 15px; /* значение gap для узких экранов */
+  }
 }/*# sourceMappingURL=card_game.css.map */
