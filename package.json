@@ -37,7 +37,6 @@
         "eslint-config-prettier": "^8.8.0",
         "eslint-plugin-prettier": "^4.2.1",
         "html-webpack-plugin": "^5.5.0",
-        "husky": "^8.0.3",
         "mini-css-extract-plugin": "^2.7.5",
         "prettier": "^2.8.4",
         "style-loader": "^3.3.2",
