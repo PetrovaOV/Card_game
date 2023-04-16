@@ -1,4 +1,4 @@
-const noop = () => { };
+const noop = () => {}
 const NO_PARAMS = {}
 
 function request({
@@ -8,37 +8,37 @@ function request({
     type = 'json',
     checkStatusInResponse = false,
     onSuccess = noop,
-    onError = noop
+    onError = noop,
 }) {
-    const req = new XMLHttpRequest();
+    const req = new XMLHttpRequest()
 
-    const urlParams = new URLSearchParams(params);
-    const queryString = urlParams.toString();
+    const urlParams = new URLSearchParams(params)
+    const queryString = urlParams.toString()
 
-    req.open(method, url + (queryString ? `?${queryString}` : ''));
-    req.responseType = type;
+    req.open(method, url + (queryString ? `?${queryString}` : ''))
+    req.responseType = type
 
     req.onload = function (event) {
-        const target = event.target;
+        const target = event.target
 
         if (target.status !== 200) {
-            onError(target.statusText);
+            onError(target.statusText)
 
-            return;
+            return
         }
 
         if (checkStatusInResponse && target.response.status !== 'ok') {
-            onError(target.statusText);
+            onError(target.statusText)
 
-            return;
+            return
         }
 
-        onSuccess(target.response);
+        onSuccess(target.response)
     }
 
     req.onerror = function () {
-        onError();
+        onError()
     }
 
-    req.send();
+    req.send()
 }
