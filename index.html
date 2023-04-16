@@ -12,10 +12,8 @@
         <script src="./src/game_class.js"></script>
     </head>
 
-
     <body>
         <div class="app"></div>
-
 
         <script>
             window.application = {
@@ -23,7 +21,8 @@
                 screen: {},
                 spentTime: undefined,
                 cards: [],
-                chosenCards: [],
+                chosenCard: null,
+                counterCards: null,
             }
 
             const screen = document.querySelector('.app')

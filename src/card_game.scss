@@ -128,7 +128,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: 1s;
+    // transition: 1s;
     backface-visibility: hidden;
     border-radius: 4px;
 }
@@ -139,11 +139,24 @@
     background-color: #fff;
     transform: rotateY(-180deg);
 }
-.card:hover .front {
+.card__front {
     transform: rotateY(-180deg);
+    transition: transform 1s ease-in-out;
 }
-.card:hover .back {
+
+.card__front_hidden {
+    transform: rotateY(0deg);
+    transition: transform 1s ease-in-out;
+}
+
+.card__back {
     transform: rotateY(-360deg);
+    transition: transform 1s ease-in-out;
+}
+
+.card__back_hidden {
+    transform: rotateY(-180deg);
+    transition: transform 1s ease-in-out;
 }
 
 .title {
