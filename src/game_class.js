@@ -1,4 +1,8 @@
-class Game {
+import { templateEngine } from './template-engine.js'
+import { difficulty, oneCard, playField } from './card_game.js'
+import svgCards from './img/svg-cards.svg'
+
+export class Game {
     constructor(screen) {
         if (!(screen instanceof HTMLElement)) {
             console.error('Error: the argument must be an HTML element')
@@ -87,7 +91,7 @@ class Game {
             let cardFront = cardId.querySelector('.imgBack')
             cardFront.setAttribute(
                 'href',
-                './src/img/svg-cards.svg' + window.application.cards[index]
+                svgCards + window.application.cards[index]
             )
             cardId.setAttribute('id', `${index}`)
         }
