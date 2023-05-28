@@ -3,11 +3,16 @@ import './card_game.css'
 
 declare global {
     interface Window {
-        application: any // Вы можете заменить any на более конкретный тип, если у вас он есть.
+        application: {
+            difficultyLevel: number
+            screen: object
+            spentTime: number | undefined
+            cards: Array<string>
+            chosenCard: string
+            counterCards: number
+        }
     }
 }
-
-
 
 const screen = document.querySelector('.app')
 document.addEventListener('DOMContentLoaded', () => {
