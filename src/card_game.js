@@ -1,4 +1,7 @@
-const difficulty = [
+import shirtSvg from './img/shirt.svg'
+
+
+export const difficulty = [
     {
         tag: 'div',
         cls: 'box',
@@ -90,7 +93,7 @@ const difficulty = [
     },
 ]
 
-const oneCard = {
+export const oneCard = {
     tag: 'div',
     cls: 'card',
     attrs: {
@@ -104,7 +107,7 @@ const oneCard = {
                 {
                     tag: 'img',
                     attrs: {
-                        src: './src/img/shirt.svg',
+                        src: shirtSvg, // './src/img/shirt.svg'
                     },
                 },
             ],
@@ -130,7 +133,7 @@ const oneCard = {
     ],
 }
 
-const playField = {
+export const playField = {
     tag: 'div',
     cls: 'wrap',
     content: [
