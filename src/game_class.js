@@ -1,5 +1,5 @@
 import { templateEngine } from './template-engine.js'
-import { difficulty, oneCard, playField } from './card_game.js'
+import { difficulty, oneCard, playField, winner, loser } from './card_game.js'
 import svgCards from './img/svg-cards.svg'
 
 export class Game {
@@ -12,11 +12,31 @@ export class Game {
         this.screen = screen
         this.init()
         this.numberOfCards
+        this.minutes
+        this.seconds
+        this.timer
+        this.timeout1
+        this.timeout2
     }
 
     init() {
+        window.application = {
+            difficultyLevel: 1,
+            screen: {},
+            startTime: null,
+            elapsedTime: null,
+            cards: [],
+            chosenCard: null,
+            counterCards: null,
+        }
+        if (typeof this.timeout1 !== 'undefined') {
+            clearTimeout(this.timeout1)
+        }
+        if (typeof this.timeout2 !== 'undefined') {
+            clearTimeout(this.timeout2)
+        }
         window.application.screen = difficulty
-        this.renderScreen()
+        this.renderScreen('new')
 
         const radioButtons = this.screen.querySelectorAll('[id^="radio_"]')
         const startButton = this.screen.querySelector('#btn')
@@ -83,7 +103,12 @@ export class Game {
         }
 
         window.application.screen = playField
-        this.renderScreen()
+        this.renderScreen('new')
+        const restartButton = this.screen.querySelector('.button__start')
+        restartButton.addEventListener('click', () => {
+            this.stopTimer()
+            this.init()
+        })
         const field = document.querySelector('.field__cards')
         for (let index = 0; index < this.numberOfCards; index++) {
             field.appendChild(templateEngine(oneCard))
@@ -95,12 +120,13 @@ export class Game {
             )
             cardId.setAttribute('id', `${index}`)
         }
-        setTimeout(() => {
+        this.timeout1 = setTimeout(() => {
             this.showAllCards()
         }, 100)
 
-        setTimeout(() => {
+        this.timeout2 = setTimeout(() => {
             this.hideAllCards()
+            this.startTimer()
         }, 5000)
 
         const cards = document.querySelectorAll('.card')
@@ -121,18 +147,33 @@ export class Game {
                                 window.application.chosenCard
                             ] !== window.application.cards[currentCard]
                         ) {
+                            this.stopTimer()
                             this.showAllCards
-                            setTimeout(() => {
-                                alert('Вы проиграли!')
+                            this.timeout2 = setTimeout(() => {
+                                window.application.screen = loser
+                                this.renderScreen('old')
+                                this.showElapsedTime()
+                                const restButton =
+                                    document.querySelector('.play__again')
+                                restButton.addEventListener('click', () => {
+                                    this.init()
+                                })
                             }, 1000)
                         } else {
                             window.application.chosenCard = null
                         }
                     }
                 } else {
-                    this.showAllCards
-                    setTimeout(() => {
-                        alert('Вы победили!')
+                    this.stopTimer()
+                    this.timeout2 = setTimeout(() => {
+                        window.application.screen = winner
+                        this.renderScreen('old')
+                        this.showElapsedTime()
+                        const restButton =
+                            document.querySelector('.play__again')
+                        restButton.addEventListener('click', () => {
+                            this.init()
+                        })
                     }, 1000)
                 }
             })
@@ -160,7 +201,7 @@ export class Game {
             frontCard.classList.remove('card__front')
             frontCard.classList.add('card__front_hidden')
         })
-        setTimeout(() => {
+        this.timeout1 = setTimeout(() => {
             backCards.forEach((backCard) => {
                 backCard.classList.remove('card__back_hidden')
             })
@@ -170,10 +211,55 @@ export class Game {
         }, 999)
     }
 
-    renderScreen() {
-        while (this.screen.firstChild) {
-            this.screen.removeChild(this.screen.firstChild)
+    renderScreen(view) {
+        if (view === 'new') {
+            while (this.screen.firstChild) {
+                this.screen.removeChild(this.screen.firstChild)
+            }
         }
         this.screen.appendChild(templateEngine(window.application.screen))
+    }
+
+    startTimer() {
+        this.minutes = document.querySelector('.show__min')
+        this.seconds = document.querySelector('.show__sec')
+        window.application.startTime = Date.now()
+        this.timer = setInterval(() => {
+            let currentTime = Date.now()
+            window.application.elapsedTime =
+                currentTime - window.application.startTime
+
+            let minutes = Math.floor(window.application.elapsedTime / 60000)
+            let seconds = (
+                (window.application.elapsedTime % 60000) /
+                1000
+            ).toFixed(0)
+            this.showTimer(minutes, seconds)
+        }, 1000)
+    }
+
+    stopTimer() {
+        clearInterval(this.timer)
+    }
+
+    showTimer(minutes, seconds) {
+        // преобразовываем числа в строки и добавляем ведущие нули
+        let minutesStr = String(minutes).padStart(2, '0')
+        let secondsStr = String(seconds).padStart(2, '0')
+
+        this.minutes.textContent = minutesStr
+        this.seconds.textContent = secondsStr
+    }
+
+    showElapsedTime() {
+        const elapsedTime = document.querySelector('.time_2')
+        const minutes = Math.floor(window.application.elapsedTime / 60000)
+        const seconds = (
+            (window.application.elapsedTime % 60000) /
+            1000
+        ).toFixed(0)
+        let minutesStr = String(minutes).padStart(2, '0')
+        let secondsStr = String(seconds).padStart(2, '0')
+        elapsedTime.textContent = minutesStr + '.' + secondsStr
     }
 }

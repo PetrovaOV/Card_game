@@ -1493,12 +1493,11 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
 /*!**********************!*\
-  !*** ./src/index.js ***!
+  !*** ./src/index.ts ***!
   \**********************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _game_class_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./game_class.js */ "./src/game_class.js");
 /* harmony import */ var _card_game_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./card_game.css */ "./src/card_game.css");
-
 
 
 window.application = {
@@ -1508,11 +1507,10 @@ window.application = {
     cards: [],
     chosenCard: null,
     counterCards: null,
-}
-
-const screen = document.querySelector('.app')
-document.addEventListener('DOMContentLoaded', () => {
-  const game = new _game_class_js__WEBPACK_IMPORTED_MODULE_0__.Game(screen);
+};
+var screen = document.querySelector('.app');
+document.addEventListener('DOMContentLoaded', function () {
+    var game = new _game_class_js__WEBPACK_IMPORTED_MODULE_0__.Game(screen);
 });
 
 })();
