@@ -21,7 +21,7 @@ export class Game {
 
     init() {
         window.application = {
-            difficultyLevel: 1,
+            difficultyLevel: '1',
             screen: {},
             startTime: null,
             elapsedTime: null,
