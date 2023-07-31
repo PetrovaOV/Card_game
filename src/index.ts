@@ -5,7 +5,7 @@ declare global {
     interface Window {
         application: {
             difficultyLevel: number
-            screen: object
+            screen: HTMLElement | null
             spentTime: number | undefined
             cards: Array<string>
             chosenCard: string
